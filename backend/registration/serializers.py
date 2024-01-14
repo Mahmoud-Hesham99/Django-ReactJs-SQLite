@@ -11,3 +11,8 @@ class UserSerializer(serializers.ModelSerializer):
             'email': {'required': True},
             'password': {'required': True},
         }
+
+class UserBasicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'name', 'email')
