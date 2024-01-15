@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import '../css/SignUp.css';
 import { apis } from '../django_api.js';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +31,10 @@ const SignUp = () => {
           setName('');
           setEmail('');
           setPassword('');
+          setTimeout(() => {
+            navigate('/login');
+          }, 3000);
+          
         } else {
           setMessage(data.message);
         }
@@ -71,6 +81,10 @@ const SignUp = () => {
         </div>
         <button type="submit">Sign Up</button>
         {message && <p className={`message ${message.includes('failed') ? 'error' : 'success'}`}>{message}</p>}
+        <p>
+          Already have an account?{' '}
+          <Link to="/login">Login here</Link>.
+        </p>
       </form>
      
     </div>

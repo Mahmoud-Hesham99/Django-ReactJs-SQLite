@@ -10,11 +10,11 @@ export default function App() {
   return (
     <div>
           <Routes>
-          <Route exact path="/" element={<Dashboard/>} />
+          <Route exact path="/" element={<SignUp/>} />
           <Route exact path="/login" element={<Login/>} />
           <Route exact path='/home' element={<Dashboard/>} />
-          <Route exact path='/SignUp' element={<SignUp/>} />
-          <Route exact path='/EditProfile' element={<EditProfile/>} />
+          <Route exact path='/signup' element={<SignUp/>} />
+          {/* <Route exact path='/EditProfile' element={<EditProfile/>} /> */}
           <Route path='/*' element={<NotFound/>} />
         </Routes>
     </div>

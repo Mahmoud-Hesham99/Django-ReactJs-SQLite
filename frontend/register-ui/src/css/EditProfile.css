@@ -4,8 +4,8 @@ body {
 
 .user-profile-container {
     max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
+    margin: 50px 80px;
+    padding: 5px 20px 10px 20px;; 
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);

@@ -17,6 +17,8 @@
 - update_profile/ *Updates the information of the user using his id
 - delete_account/$id/ *Deletes an account with specified id
 - verifyOTP/ *Commented but can be used to verify the account
+- login/ *Used to login the user using his email and password *The pass SHOULD BE HASHED
+- get_profile/ *Gets the name and email of the user using his id *A token should be generated to get his data along with the id
 
 ### Account confirmation via email - Not Implemented
 - Send Confirmation Email:
@@ -41,7 +43,29 @@
 2. Validate the token from the link against the stored token in the database.
 3. If the tokens match, allow the user to reset their password.
 
+### Database used is SQLite
+
 ### To be noted: 
 > Passwords are not hashed which they should be for more security. 
 
 > Tokens should be generated when user logs in for authentication.
+
+## Prerequisites
+- Python: 3.11.4
+
+### Installation
+
+- pip install django
+- pip install djangorestframework
+- pip install django-cors-headers
+
+
+```bash
+# Clone the repository
+git clone https://github.com/Mahmoud-Hesham99/Django-ReactJs-SQLite
+
+# Navigate to the project directory
+cd backend
+
+# Run backend
+python manage.py runserver

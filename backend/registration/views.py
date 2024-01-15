@@ -14,13 +14,21 @@ def get_all_accounts(request, id=0):
         users = User.objects.filter(verified=True)
         users_serializer = UserBasicSerializer(users, many=True)
         return JsonResponse(users_serializer.data, safe=False)
+
+
+@csrf_exempt
+def get_profile(request, id=0):
+    if request.method=='GET':
+        user = User.objects.get(id=id)
+        user_serializer = UserBasicSerializer(user)
+        return JsonResponse(user_serializer.data, safe=False)
     
 @csrf_exempt
 def signup(request, id=0):
     user_data = JSONParser().parse(request)
     if request.method=='POST':
         user_data['otp'] = str(random.randint(100000, 999999))  # Generate random 6-digit OTP
-        user_data['verified'] = False
+        user_data['verified'] = True # Set to False if you want to use OTP verification
         # We should send an email to the user with the OTP or generate a token and send it
         # then we check if the OTP is correct
         user_serializer = UserSerializer(data=user_data)
@@ -41,7 +49,7 @@ def login(request, id=0):
             user_serializer = UserSerializer(user, data=user_data, partial=True)
             if user_serializer.is_valid():
                 user_serializer.save()
-            return JsonResponse({"success": True, "message":"Welcome!"}, safe=False)
+            return JsonResponse({"success": True, "message":"Welcome!", "userId":user.id}, safe=False)
         return JsonResponse({"success": False, "message":"Something went wrong :("}, safe=False)
     
 @csrf_exempt
@@ -52,8 +60,8 @@ def update_profile(request,id=0):
         user_serializer = UserSerializer(user, data=user_data, partial=True)
         if user_serializer.is_valid():
             user_serializer.save()
-            return JsonResponse("Account updated Successfully!", safe=False)
-        return JsonResponse("Something went wrong :(", safe=False)
+            return JsonResponse({"success": True, "message":"Account Updated Successfully!"}, safe=False)
+        return JsonResponse({"success": False, "message":"Something went wrong :("}, safe=False)
 
 @csrf_exempt
 def delete_account(request,id=0):
