@@ -81,13 +81,16 @@
 
 Step-by-step guide on installing your project.
 
-- To run the Fronend
 ```bash
 # Clone the repository
 git clone https://github.com/Mahmoud-Hesham99/Django-ReactJs-SQLite
+```
 
+- To run the Fronend
+
+```bash
 # Navigate to the project directory
-cd cd frontend/register-ui/
+cd frontend/register-ui/
 
 # Install dependencies
 npm install
@@ -97,10 +100,8 @@ npm start
 ```
 
 - To run the Backend
-```bash
-# Clone the repository
-git clone https://github.com/Mahmoud-Hesham99/Django-ReactJs-SQLite
 
+```bash
 # Navigate to the project directory
 cd backend
 
