@@ -79,7 +79,7 @@
 - pip install django-cors-headers
 
 
-Step-by-step guide on installing your project.
+To install the project.
 
 ```bash
 # Clone the repository

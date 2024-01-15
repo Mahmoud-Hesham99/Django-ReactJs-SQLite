@@ -16,7 +16,7 @@
 ### Installation
 
 
-Step-by-step guide on installing your project.
+To install the project.
 
 ```bash
 # Clone the repository
